@@ -1,4 +1,4 @@
-import logging
+import logging, os
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, JobQueue
@@ -74,8 +74,8 @@ def print_results(sleep_or_wake_timings, sleep_or_wake):
 
 
 def main():
-    key = open('apikey.txt', 'r')
-    updater = Updater(key.read())
+    # key = open('apikey.txt', 'r')
+    updater = Updater(os.environ['API_KEY'])
 
     # Dispatcher to register handlers
     dp = updater.dispatcher
