@@ -11,7 +11,7 @@ Link: https://t.me/sleepcalculatorbot
 
 Information about REM sleep cycles: https://www.tuck.com/stages/
 
-**Running Bot Locally**
+## Running Bot Locally
 To run this project locally, you have to first create a bot with [BotFather](https://telegram.me/BotFather), and a new API key will be generated. Under 'main.py', uncomment line 77:
 ```
 # key = open('apikey.txt', 'r')
