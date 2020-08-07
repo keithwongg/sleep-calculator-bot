@@ -49,13 +49,33 @@ def wake_or_sleep(bot, update):
     if wake_sleep[0] == 'wake':
         # print('wake up choice')
         user_time = update.message.text
+        
+        # validation handling
+        try:
+            if int(user_time) > 2400 or int(user_time) < 0 or len(user_time) != 4:
+                bot.send_message(chat_id=update.message.chat_id, text = "Invalid Input. Please enter time in 24 hour format, between 0001 and 2400")
+                return 0
+        except ValueError:
+            bot.send_message(chat_id=update.message.chat_id, text = "Invalid Input. Input is not a number. Please enter time in 24 hour format.")
+            return 0
+
         from wake import sleep_calculator
         wake_timings = sleep_calculator(user_time)
         print_text = print_results(wake_timings, 'Wake Up')
         bot.send_message(chat_id=update.message.chat_id, text = print_text)
+
     elif wake_sleep[0] == 'sleep':
         # print('sleep choice')
         user_time = update.message.text
+        # validation handling
+        try:
+            if int(user_time) > 2400 or int(user_time) < 0 or len(user_time) != 4:
+                bot.send_message(chat_id=update.message.chat_id, text = "Invalid Input. Please enter time in 24 hour format, between 0001 and 2400")
+                return 0
+        except ValueError:
+            bot.send_message(chat_id=update.message.chat_id, text = "Invalid Input. Input is not a number. Please enter time in 24 hour format.")
+            return 0
+            
         from sleep import sleep_calculator
         sleep_timings = sleep_calculator(user_time)
         print_text = print_results(sleep_timings, 'Sleep')
